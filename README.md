@@ -14,7 +14,6 @@ Clone the project to your local machine:
 
 ```bash
 git clone https://github.com/LorenaLorene/midnite.git
-cd midnite
 ```
 
 
