@@ -4,10 +4,6 @@ This is a simple FastAPI project with a single endpoint: `/event`.
 Endpoint takes payload representing users action and returns alert.
 
 
-## Requirements
-
-Python 3.7 or higher
-
 ## Setup Instructions
 
 Follow the steps below to set up and run the FastAPI server.
@@ -22,7 +18,7 @@ cd midnite
 ```
 
 
-### 2. Install requirements & run server
+### 2. Install requirements & run the server
 
 ```bash
 pip install -r requirements.txt
@@ -36,8 +32,22 @@ Local dabatabase will be populated when application is built.
 
 ### 3. Test event endpoint 
 
+Test db will be populated with 3 users. 3 different POST will return different codes.
+
+##### This will return code - 123 for user - 2 if it's run less than 30 sec after the built 
 ```bash
 curl -XPOST http://127.0.0.1:8000/event -H 'Content-Type: application/json' \
 -d '{"type": "deposit", "amount": "50.00", "user_id": 2, "t": 0}'
 ```
 
+##### This will return code - 30 for user -1 
+```bash
+curl -XPOST http://127.0.0.1:8000/event -H 'Content-Type: application/json' \
+-d '{"type": "withdraw", "amount": "50.00", "user_id": 1, "t": 0}'
+```
+
+##### This will return no code for user - 3
+```bash
+curl -XPOST http://127.0.0.1:8000/event -H 'Content-Type: application/json' \
+-d '{"type": "withdraw", "amount": "50.00", "user_id": 3, "t": 0}'
+```
